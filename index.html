@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramesh Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* Global styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: rgb(0, 0, 33);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            height: 60px;
+            background-color: rgb(18, 18, 62);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            
+            
+            
+        }
+        nav ul {
+            display: flex;
+            
+        }
+        nav ul li {
+            list-style: none;
+            margin: 0 15px;
+            padding: 20px;
+            cursor: pointer; 
+            transition: all 0.3s ease;
+            margin:20px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            
+        }
+        nav ul li a:hover {
+            color: rgb(142, 142, 221);
+            font-size: 1.02rem;
+        }
+        .left {
+            font-size: 1.5rem;
+        }
+        .firstSection {
+            display: flex;
+            justify-content: space-around;
+            margin: 80px 0;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .firstSection > div {
+            width: 40%;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s forwards;
+        }
+        .leftsection {
+            font-size: 2rem;
+        }
+        .rightsection img {
+            width: 55%;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            margin:10px;
+        }
+        .rightsection img:hover {
+            transform: scale(1.05);
+        }
+        .purple {
+            color: rgb(139, 43, 236);
+        }
+        #element {
+            color: rgb(139, 43, 236);
+        }
+        .secondsection, .projects-section, .services-section, .contact-section {
+            max-width: 80vw;
+            margin: auto;
+            padding: 50px 0;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s forwards;
+        }
+        .textgray {
+            color: rgb(109, 104, 104);
+            font-size: 0.9rem;
+        }
+        .skills-container, .projects-container, .services-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .skill-box, .project-box, .service-box {
+            background: rgb(18, 18, 62);
+            border-radius: 10px;
+            padding: 20px;
+            width: 30%;
+            margin-bottom: 20px;
+            text-align: center;
+            color: white;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .skill-box:hover, .project-box:hover, .service-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+        }
+        .skill-box img, .project-box img {
+            width: 50px;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+        .skill-box img:hover, .project-box img:hover {
+            transform: scale(1.1);
+        }
+        .title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .desc {
+            font-size: 0.9rem;
+            color: rgb(180, 180, 255);
+        }
+        .project-box a {
+            display: block;
+            text-decoration: none;
+            color: white;
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+        .project-box a:hover {
+            color: rgb(142, 142, 221);
+        }
+        #imageModal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        #imageModal img {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+        #imageModal .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        #imageModal .close:hover,
+        #imageModal .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        footer {
+            background-color: rgb(18, 18, 62);
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        footer .footer-content {
+            margin-bottom: 10px;
+        }
+        .contact-section form {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .contact-section input, .contact-section textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid rgb(109, 104, 104);
+            background-color: rgb(18, 18, 62);
+            color: white;
+            font-size: 1rem;
+        }
+        .contact-section button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: rgb(139, 43, 236);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 1rem;
+        }
+        .contact-section button:hover {
+            background-color: rgb(142, 142, 221);
+        }
+        @media screen and (max-width: 768px) {
+            .skills-container, .projects-container, .services-container, .contact-section form {
+                flex-direction: column;
+                align-items: center;
+            }
+            .skill-box, .project-box, .service-box {
+                width: 80%;
+            }
+            .contact-section input,
+            .contact-section textarea {
+                width: 100%;
+            }
+        }
+        main hr {
+            color: lavender;
+            margin: 30px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="left">Ramesh's Portfolio</div>
+            <div class="right">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main id="home">
+        <section class="firstSection">
+            <div class="leftsection">
+                Hi, my name is <span class="purple">Ramesh Aluru</span> and I am a passionate  
+                <span id="element"></span>
+            </div>
+            <div class="rightsection">
+                <img src="c.jpeg" alt="Profile picture">
+            </div>
+        </section>
+        <hr>
+        <section class="secondsection" id="about">
+            <span class="textgray">What Skills I have</span>
+            <h1>Skill Set</h1>
+            <div class="skills-container">
+                <div class="skill-box">
+                    <img src="2.png" alt="HTML5">
+                    <h3 class="title">Front-end Developer</h3>
+                    <p class="desc">Proficient in HTML, CSS, and JavaScript.</p>
+                </div>
+                <div class="skill-box">
+                    <img src="1.png" alt="CSS3">
+                    <h3 class="title">Excel and PowerBI</h3>
+                    <p class="desc">Styling web pages with modern CSS techniques.</p>
+                </div>
+                <div class="skill-box">
+                    <img src="Picture-Data-Scientist.png" alt="Data Scientist ">
+                    <h3 class="title">Data Scientist</h3>
+                    <p class="desc">Experience with machine learning and statistical analysis.</p>
+                </div>
+            </div>
+        </section>
+        <hr>
+        <section class="projects-section" id="projects">
+            <h1>Projects</h1>
+            <div class="projects-container">
+                <div class="project-box" onclick="openModal()">
+                    <img src="powerbi1png.png" alt="Blinkit Data Analysis">
+                    <a href="#">Blinkit Data Analysis</a>
+                </div>
+                <div class="project-box">
+                    <img src="Discordbot.png" alt="Discord Bot Project">
+                    <a href="https://github.com/alururamesh521/ContestAlertBot-Dante" target="_blank">Contest-alert Discord Bot</a>
+                </div>
+                <div class="project-box">
+                    <img src="Leaderboard.png" alt="Automated Leaderboard Project">
+                    <a href="https://github.com/alururamesh521/AutoupdateCoderankings" target="_blank">Automated Leaderboard</a>
+                </div>
+            </div>
+        </section>
+        <hr>
+        <section class="services-section" id="services">
+            <h1>Services</h1>
+            <div class="services-container">
+                <div class="service-box">
+                    <h2>Web Development</h2>
+                    <p>Creating responsive and visually appealing websites using modern technologies.</p>
+                </div>
+                <div class="service-box">
+                    <h2>Data Analysis</h2>
+                    <p>Analyzing complex data sets to provide actionable insights and business intelligence.</p>
+                </div>
+                <div class="service-box">
+                    <h2>Consulting</h2>
+                    <p>Offering expert advice on technology and data-related projects to help you achieve your goals.</p>
+                </div>
+            </div>
+        </section>
+        <hr>
+        <section class="contact-section" id="contact">
+            <h1>Contact Me</h1>
+            <form>
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Ramesh Aluru. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Modal for large image view -->
+    <div id="imageModal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img src="powerbi.png" alt="Power BI Dashboard">
+    </div>
+
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+        var typed = new Typed('#element', {
+            strings: ['Front-end Developer', 'Data Analyst', 'Power BI Expert'],
+            typeSpeed: 50,
+        });
+
+        function openModal() {
+            document.getElementById("imageModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("imageModal").style.display = "none";
+        }
+    </script>
+</body>
+</html>
