@@ -1,20 +1,14 @@
-# Use an official Node runtime as a parent image
-FROM node:18
+# Use a lightweight Linux image
+FROM ubuntu:22.04
 
 # Set working directory
 WORKDIR /app
 
-# Copy package files
-COPY package*.json ./
-
-# Install dependencies
-RUN npm install
-
-# Copy source code
+# Copy all source files into the container
 COPY . .
 
-# Expose port
-EXPOSE 3000
+# Expose any port if needed (example: 80)
+EXPOSE 80
 
-# Start app
-CMD ["node", "index.js"]
+# Set the default command (replace with your app's start command)
+CMD ["bash"]
