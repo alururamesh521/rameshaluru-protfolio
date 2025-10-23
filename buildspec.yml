@@ -3,8 +3,15 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo "No Docker needed, just simple build"
+      - echo "Install phase - nothing needed here"
+  pre_build:
+    commands:
+      - echo "Pre-build phase - setup if needed"
   build:
     commands:
-      - echo "Copying files to S3..."
-      - aws s3 sync . s3://your-bucket-name --delete
+      - echo "Build phase - your commands go here"
+      - echo "For example, just listing files:"
+      - ls -la
+artifacts:
+  files:
+    - '**/*'
